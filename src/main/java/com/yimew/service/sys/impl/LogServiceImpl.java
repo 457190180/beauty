@@ -3,6 +3,7 @@ package com.yimew.service.sys.impl;
 import com.yimew.config.base.page.BasePage;
 import com.yimew.config.base.service.BaseServiceImpl;
 import com.yimew.entity.sys.Log;
+import com.yimew.entity.sys.LogQuery;
 import com.yimew.entity.sys.User;
 import com.yimew.service.sys.LogService;
 import com.yimew.util.UUIDUtils;
@@ -16,20 +17,27 @@ import java.util.List;
 @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
 public class LogServiceImpl extends BaseServiceImpl implements LogService {
 
+
+	@Override
+	public LogQuery getQuery(BasePage basePage) throws Exception {
+		return null;
+	}
+
 	@Override
 	public Log getById(String id) throws Exception {
 		return null;
 	}
 
 	@Override
-	public List<Log> getList(BasePage basePage) throws Exception {
+	public List<Log> getList(LogQuery logQuery) throws Exception {
 		return null;
 	}
 
 	@Override
-	public Integer countList(BasePage basePage) throws Exception {
+	public Integer countList(LogQuery logQuery) throws Exception {
 		return null;
 	}
+
 
 	@Override
 	public Integer insertSelective(Log log, User user) throws Exception {

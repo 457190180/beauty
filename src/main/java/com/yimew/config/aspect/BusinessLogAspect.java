@@ -71,7 +71,7 @@ public class BusinessLogAspect {
 			return result;
 		}
 
-		//重要!!!!请自行实现UserUtils中获取用户id方法
+		//TODO 重要!!!!请自行实现UserUtils中获取用户id方法
 		String userId = getUserId(request);
 		// 非登录模式下不记系统日志
 		if (userId == null) {

@@ -1,4 +1,4 @@
-package com.yimew.controller.app;
+package com.yimew.controller.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -9,8 +9,10 @@ import com.yimew.config.web.ReturnData;
 import com.yimew.entity.sys.User;
 import com.yimew.entity.wechatBase.TplMsg;
 import com.yimew.entity.wechatBase.WechatParam;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -19,23 +21,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * * @author 作者 E-mail: * @date 创建时间：2017年11月2日 上午9:59:52 * @version 1.0
- * * @parameter * @since * @return
- */
-@Controller
-@RequestMapping(value = "/app/wechat")
-public class WechatController extends BaseController {
-    @Autowired
-    private JedisPool jedisPool;
 
-    @RequestMapping(value = "/fastLogin", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, consumes = "application/json")
-    @ApiOperation(value = "微信快速登录", httpMethod = "POST", response = ReturnData.class, notes = "微信快速登录")
+@Controller
+@RequestMapping(value = "/app/demo")
+@Api(description = "demoContoller")
+public class DemoController extends BaseController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
+
+
+    @RequestMapping(value = "", produces = "application/json;charset=UTF-8", method = RequestMethod.POST, consumes = "application/json")
+    @ApiOperation(value = "demo保存")
     public @ResponseBody
     ReturnData fastLogin(@RequestBody @Validated WechatParam wechatParam, Errors errors, HttpServletRequest request) {
         return null;

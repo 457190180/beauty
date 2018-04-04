@@ -6,6 +6,8 @@ import com.yimew.entity.exception.AuthorityException;
 import com.yimew.entity.sys.User;
 import com.yimew.entity.sys.UserQuery;
 import com.yimew.service.sys.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ import java.util.List;
         rollbackFor = {Throwable.class})
 public class UserServiceImpl  extends BaseServiceImpl implements UserService {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Override
     public User getUserByRedis(String userCode) throws JedisException {
@@ -40,20 +43,25 @@ public class UserServiceImpl  extends BaseServiceImpl implements UserService {
     }
 
     @Override
+    public UserQuery getQuery(BasePage basePage) throws Exception {
+        return null;
+    }
+
+    @Override
     public User getById(String id) throws Exception {
         return null;
     }
 
     @Override
-    public List<User> getList(BasePage basePage) throws Exception {
-
-        return userDao.selectByExample(new UserQuery());
+    public List<User> getList(UserQuery userQuery) throws Exception {
+        return null;
     }
 
     @Override
-    public Integer countList(BasePage basePage) throws Exception {
+    public Integer countList(UserQuery userQuery) throws Exception {
         return null;
     }
+
 
     @Override
     public Integer insertSelective(User user, User user2) throws Exception {

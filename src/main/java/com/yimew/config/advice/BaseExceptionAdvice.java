@@ -22,7 +22,7 @@ public class BaseExceptionAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(BaseException.class)
     @ResponseBody
-    public ResponseMessage handlerAdcDaBaseException(BaseException exception) {
+    public ResponseMessage handlerBaseException(BaseException exception) {
         logger.warn(exception.getMessage(), exception);
         return Result.error(exception.getErrorCode(), exception.getMessage());
     }
@@ -30,10 +30,10 @@ public class BaseExceptionAdvice {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseMessage handlerAdcDaBaseException(Exception exception) {
-        exception.printStackTrace();
+    public ResponseMessage handlerBaseException(Exception exception) {
         logger.error(exception.getMessage(), exception);
         // TODO 在数据库中记录程序异常，这个地方的异常是未处理的异常，需要管理员查看并进行处理以防重复出现
+        exception.printStackTrace();
         return Result.error(ResponseMessageCodeEnum.ERROR.getCode(), "程序异常，请重试。如果重复出现请联系管理员处理！");
     }
 

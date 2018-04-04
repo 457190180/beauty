@@ -4,11 +4,12 @@ import com.yimew.config.base.page.BasePage;
 import com.yimew.config.base.service.BaseService;
 import com.yimew.entity.exception.AuthorityException;
 import com.yimew.entity.sys.User;
+import com.yimew.entity.sys.UserQuery;
 import redis.clients.jedis.exceptions.JedisException;
 
 
 
-public interface UserService extends BaseService<User,BasePage,String> {
+public interface UserService extends BaseService<User,BasePage,String,UserQuery> {
 
     /**
      * 通过redis获取用户信息

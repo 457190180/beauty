@@ -7,6 +7,7 @@ package com.yimew.config.base.controller;
 
 import com.yimew.service.sys.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -22,6 +23,8 @@ public class BaseController<T> {
 
     @Autowired
     protected UserService userService;
+    @Autowired
+    protected JedisPool jedisPool;
 
     private static final String DATA = "data";
     private static final String TOTAL = "total";

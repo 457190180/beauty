@@ -5,8 +5,17 @@ import com.yimew.entity.sys.User;
 
 import java.util.List;
 
-public interface BaseService<T,P extends BasePage,K> {
-	
+public interface BaseService<T,P extends BasePage,K,Q> {
+
+	/**
+	 * 公共获取查询用query
+	 * @param p
+	 * @return
+	 * @throws Exception
+	 */
+	public Q getQuery(P p)throws  Exception;
+
+
 	/**
 	 * 公共根据Id获取数据
 	 * @param id
@@ -16,17 +25,17 @@ public interface BaseService<T,P extends BasePage,K> {
 	
 	/**
 	 * 公共获取列表
-	 * @param p
+	 * @param q
 	 * @return
 	 */
-	public List<T> getList(P p)throws  Exception;
+	public List<T> getList(Q q)throws  Exception;
 	
 	/**
 	 * 公共统计
-	 * @param p
+	 * @param q
 	 * @return
 	 */
-	public Integer countList(P p)throws  Exception;
+	public Integer countList(Q q)throws  Exception;
 	
 	/**
 	 * 公共部分保存
