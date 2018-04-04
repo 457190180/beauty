@@ -74,7 +74,7 @@ public interface BaseService<T,P extends BasePage,K,Q> {
 	 * @param ks
 	 * @return
 	 */
-	public Integer del(List<K> ks, User user) throws  Exception;
+	public Integer del(List<T> ks, User user) throws  Exception;
 	
 
 

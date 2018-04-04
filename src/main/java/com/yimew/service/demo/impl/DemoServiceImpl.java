@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -98,9 +99,11 @@ public class DemoServiceImpl extends BaseServiceImpl implements DemoService {
     }
 
     @Override
-    public Integer del(List<String> strings, User user) throws Exception {
+    public Integer del(List<Demo> demos, User user) throws Exception {
+        List<String> ids = new LinkedList<>();
+        demos.forEach((demo)->ids.add(demo.getDemoId()));
         DemoQuery demoQuery = new DemoQuery();
-        demoQuery.createCriteria().andDemoIdIn(strings);
+        demoQuery.createCriteria().andDemoIdIn(ids);
         return demoDao.deleteByExample(demoQuery);
     }
 }

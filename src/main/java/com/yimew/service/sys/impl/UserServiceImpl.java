@@ -84,7 +84,7 @@ public class UserServiceImpl  extends BaseServiceImpl implements UserService {
     }
 
     @Override
-    public Integer del(List<String> strings, User user) throws Exception {
+    public Integer del(List<User> strings, User user) throws Exception {
         return null;
     }
 }

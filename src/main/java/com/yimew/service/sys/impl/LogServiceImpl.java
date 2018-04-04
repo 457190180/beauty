@@ -62,7 +62,7 @@ public class LogServiceImpl extends BaseServiceImpl implements LogService {
 	}
 
 	@Override
-	public Integer del(List<String> strings, User user) throws Exception {
+	public Integer del(List<Log> strings, User user) throws Exception {
 		return null;
 	}
 }
