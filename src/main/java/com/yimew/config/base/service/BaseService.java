@@ -42,7 +42,7 @@ public interface BaseService<T,P extends BasePage,K,Q> {
 	 * @param t
 	 * @return
 	 */
-	public Integer insertSelective(T t, User user)throws  Exception;
+	public T insertSelective(T t, User user)throws  Exception;
 
 	/**
 	 * 公共全部保存
@@ -51,14 +51,14 @@ public interface BaseService<T,P extends BasePage,K,Q> {
 	 * @return
 	 * @throws Exception
 	 */
-	public Integer insert(T t, User user)throws  Exception;
+	public T insert(T t, User user)throws  Exception;
 
 	/**
 	 * 公共部分修改
 	 * @param t
 	 * @return
 	 */
-	public Integer updateByPrimaryKeySelective(T t, User user)throws  Exception;
+	public T updateByPrimaryKeySelective(T t, User user)throws  Exception;
 
 	/**
 	 * 公共全部修改
@@ -67,14 +67,14 @@ public interface BaseService<T,P extends BasePage,K,Q> {
 	 * @return
 	 * @throws Exception
 	 */
-	public Integer updateByPrimaryKey(T t, User user)throws  Exception;
+	public T updateByPrimaryKey(T t, User user)throws  Exception;
 
 	/**
 	 * 公共删除
 	 * @param ks
 	 * @return
 	 */
-	public List<String> del(List<K> ks, User user) throws  Exception;
+	public Integer del(List<K> ks, User user) throws  Exception;
 	
 
 

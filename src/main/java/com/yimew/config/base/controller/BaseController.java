@@ -5,10 +5,13 @@
 
 package com.yimew.config.base.controller;
 
+import com.yimew.entity.sys.User;
+import com.yimew.service.demo.DemoService;
 import com.yimew.service.sys.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisPool;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +28,10 @@ public class BaseController<T> {
     protected UserService userService;
     @Autowired
     protected JedisPool jedisPool;
+    @Autowired
+    protected DemoService demoService;
+    @Autowired
+    protected HttpServletRequest request;
 
     private static final String DATA = "data";
     private static final String TOTAL = "total";
@@ -32,15 +39,11 @@ public class BaseController<T> {
     protected BaseController() {
     }
 
-//    public PageInfo<T> getPageInfo(Pager pager, List<T> rows) {
-//        PageInfo<T> pageInfo = new PageInfo();
-//        pageInfo.setList(rows);
-//        pageInfo.setCount((long)pager.getRowCount());
-//        pageInfo.setPageSize(pager.getPageSize());
-//        pageInfo.setPageCount((long)pager.getPageCount());
-//        pageInfo.setPageNo(pager.getPageId());
-//        return pageInfo;
-//    }
+    public User getUser(){
+        //TODO 实现获取用户方法
+        return new User();
+    }
+
 
     public static Map<String, Object> getGridData(int total, List<?> rows) {
         Map<String, Object> response = new HashMap();

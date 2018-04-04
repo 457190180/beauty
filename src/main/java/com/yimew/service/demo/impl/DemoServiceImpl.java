@@ -4,20 +4,17 @@ import com.yimew.config.base.page.BasePage;
 import com.yimew.config.base.service.BaseServiceImpl;
 import com.yimew.entity.demo.Demo;
 import com.yimew.entity.demo.DemoQuery;
-import com.yimew.entity.exception.AuthorityException;
 import com.yimew.entity.sys.User;
-import com.yimew.entity.sys.UserQuery;
 import com.yimew.service.demo.DemoService;
-import com.yimew.service.sys.UserService;
 import com.yimew.util.PageUtils;
+import com.yimew.util.UUIDUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import redis.clients.jedis.exceptions.JedisException;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -65,28 +62,45 @@ public class DemoServiceImpl extends BaseServiceImpl implements DemoService {
     }
 
     @Override
-    public Integer insertSelective(Demo demo, User user) throws Exception {
-        //demo.setCreateBy(user.get);
-        return demoDao.insertSelective(demo);
+    public Demo insertSelective(Demo demo, User user) throws Exception {
+       // Optional<User> optionalUser = Optional.ofNullable(user);
+       // optionalUser.ma
+        //boolean present = optionalUser.isPresent(demoDao.insertSelective(demo));
+        demo.setDemoId(UUIDUtils.getUUID());
+        demo.setCreateBy(user.getUserCode());
+        demo.setCreateTime(new Date());
+        demoDao.insertSelective(demo);
+        return demo;
     }
 
     @Override
-    public Integer insert(Demo demo, User user) throws Exception {
-        return null;
+    public Demo insert(Demo demo, User user) throws Exception {
+        demo.setCreateBy(user.getUserCode());
+        demo.setCreateTime(new Date());
+        demoDao.insert(demo);
+        return demo;
     }
 
     @Override
-    public Integer updateByPrimaryKeySelective(Demo demo, User user) throws Exception {
-        return null;
+    public Demo updateByPrimaryKeySelective(Demo demo, User user) throws Exception {
+        demo.setUpdateBy(user.getUserCode());
+        demo.setUpdateTime(new Date());
+        demoDao.updateByPrimaryKeySelective(demo);
+        return demo;
     }
 
     @Override
-    public Integer updateByPrimaryKey(Demo demo, User user) throws Exception {
-        return null;
+    public Demo updateByPrimaryKey(Demo demo, User user) throws Exception {
+        demo.setUpdateBy(user.getUserCode());
+        demo.setUpdateTime(new Date());
+        demoDao.updateByPrimaryKey(demo);
+        return demo;
     }
 
     @Override
-    public List<String> del(List<String> strings, User user) throws Exception {
-        return null;
+    public Integer del(List<String> strings, User user) throws Exception {
+        DemoQuery demoQuery = new DemoQuery();
+        demoQuery.createCriteria().andDemoIdIn(strings);
+        return demoDao.deleteByExample(demoQuery);
     }
 }

@@ -40,28 +40,29 @@ public class LogServiceImpl extends BaseServiceImpl implements LogService {
 
 
 	@Override
-	public Integer insertSelective(Log log, User user) throws Exception {
+	public Log insertSelective(Log log, User user) throws Exception {
 		log.setLogId(UUIDUtils.getUUID());
-		return logDao.insertSelective(log);
+		logDao.insertSelective(log);
+		return log ;
 	}
 
 	@Override
-	public Integer insert(Log log, User user) throws Exception {
+	public Log insert(Log log, User user) throws Exception {
 		return null;
 	}
 
 	@Override
-	public Integer updateByPrimaryKeySelective(Log log, User user) throws Exception {
+	public Log updateByPrimaryKeySelective(Log log, User user) throws Exception {
 		return null;
 	}
 
 	@Override
-	public Integer updateByPrimaryKey(Log log, User user) throws Exception {
+	public Log updateByPrimaryKey(Log log, User user) throws Exception {
 		return null;
 	}
 
 	@Override
-	public List<String> del(List<String> strings, User user) throws Exception {
+	public Integer del(List<String> strings, User user) throws Exception {
 		return null;
 	}
 }

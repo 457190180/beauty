@@ -64,27 +64,27 @@ public class UserServiceImpl  extends BaseServiceImpl implements UserService {
 
 
     @Override
-    public Integer insertSelective(User user, User user2) throws Exception {
+    public User insertSelective(User user, User user2) throws Exception {
         return null;
     }
 
     @Override
-    public Integer insert(User user, User user2) throws Exception {
+    public User insert(User user, User user2) throws Exception {
         return null;
     }
 
     @Override
-    public Integer updateByPrimaryKeySelective(User user, User user2) throws Exception {
+    public User updateByPrimaryKeySelective(User user, User user2) throws Exception {
         return null;
     }
 
     @Override
-    public Integer updateByPrimaryKey(User user, User user2) throws Exception {
+    public User updateByPrimaryKey(User user, User user2) throws Exception {
         return null;
     }
 
     @Override
-    public List<String> del(List<String> strings, User user) throws Exception {
+    public Integer del(List<String> strings, User user) throws Exception {
         return null;
     }
 }
