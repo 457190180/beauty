@@ -4,6 +4,7 @@ import com.yimew.config.base.page.BasePage;
 import com.yimew.config.base.service.BaseServiceImpl;
 import com.yimew.entity.demo.Demo;
 import com.yimew.entity.demo.DemoQuery;
+import com.yimew.entity.sys.BusinessLog;
 import com.yimew.entity.sys.User;
 import com.yimew.service.demo.DemoService;
 import com.yimew.util.PageUtils;
@@ -27,7 +28,6 @@ public class DemoServiceImpl extends BaseServiceImpl implements DemoService {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
 
-
     @Override
     public DemoQuery getQuery(BasePage basePage) throws Exception {
         // 分页
@@ -40,7 +40,11 @@ public class DemoServiceImpl extends BaseServiceImpl implements DemoService {
         q.setPageSize(limit);
         q.setStartRow(offset);
         //排序
-        q.setOrderByClause(basePage.getSort()+" "+basePage.getOrder());
+        String sort = basePage.getSort();
+        String order = basePage.getOrder();
+        if(sort!=null && order!=null){
+            q.setOrderByClause(sort+" "+order);
+        }
 
         //查询条件如下
         //......
@@ -51,7 +55,7 @@ public class DemoServiceImpl extends BaseServiceImpl implements DemoService {
     public Demo getById(String id) throws Exception {
         return demoDao.selectByPrimaryKey(id);
     }
-
+    @BusinessLog(description = "获取列表")
     @Override
     public List<Demo> getList(DemoQuery demoQuery) throws Exception {
         return demoDao.selectByExample(demoQuery);

@@ -47,7 +47,7 @@ public class BusinessLogAspect {
 	 */
 	@Pointcut(value = "(execution(* com.yimew.service.*.*.insert*(..)) "
 			+ "|| execution(* com.yimew.service.*.update*(..)) "
-			+ "|| execution(* com.yimew.service.*.delete*(..)) " + "|| execution(* com.yimew.*.service.*.get*(..)) "
+			+ "|| execution(* com.yimew.service.*.delete*(..)) " + "|| execution(* com.yimew.service.*.*.get*(..)) "
 			+ "|| execution(* com.yimew.service.*.find*(..)) " + "|| execution(* com.yimew.*.service.*.page*(..))) "
 			+ "&& !execution(* com.yimew.service.sys.LogService.*(..))")
 	private void servicePointcut() {
