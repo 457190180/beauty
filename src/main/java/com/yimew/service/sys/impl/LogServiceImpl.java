@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("logService")
@@ -42,6 +43,7 @@ public class LogServiceImpl extends BaseServiceImpl implements LogService {
 	@Override
 	public Log insertSelective(Log log, User user) throws Exception {
 		log.setLogId(UUIDUtils.getUUID());
+		log.setCreateTime(new Date());
 		logDao.insertSelective(log);
 		return log ;
 	}

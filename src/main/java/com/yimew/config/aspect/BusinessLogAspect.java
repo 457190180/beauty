@@ -39,7 +39,7 @@ public class BusinessLogAspect {
 	@Autowired
 	private UserDao userDao;
 
-	@Value("${sysLogType}")
+	@Value("#{application[sysLogType]}")
 	private String sysLogType;
 
 	/**
@@ -112,8 +112,8 @@ public class BusinessLogAspect {
 //		if (userEO != null) {
 //			logEO.setUserId("");
 //		}
-		logEO.setCreateTime(new Date(startTime));
-		logEO.setCreateTime(new Date(endTime));
+		logEO.setStartTime(new Date(startTime));
+		logEO.setEndTime(new Date(endTime));
 		logService.insertSelective(logEO,new User());
 	}
 }
